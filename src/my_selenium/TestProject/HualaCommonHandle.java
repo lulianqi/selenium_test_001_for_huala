@@ -197,7 +197,7 @@ public final class HualaCommonHandle {
 	 */
 	public static void hualaCreatOrder(WebDriver driver) {
 		 ShowMes("开始下单");
-		 MySleep(2000);
+		 MySleep(1500);
 		 driver.findElement(By.linkText("查看全部")).click(); 
 		    MySleep(2000);
 		    try {
