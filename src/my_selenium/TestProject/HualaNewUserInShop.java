@@ -44,7 +44,7 @@ public class HualaNewUserInShop {
 //		driver = new FirefoxDriver();
 		
 		//baseUrl = "http://xp.xiaxiaw.com";
-		baseUrl = "http://wxtest.huala.com:8081";
+		baseUrl = "http://wxtest.huala.com";
 
 		// 定位对象时给3s的时间
 		// 如果3s内还定位不到则抛出异常
@@ -78,11 +78,12 @@ public class HualaNewUserInShop {
 		 String souceDate="13538947486,13538947363,13539490295,13539474507,13539431483,13539409167,13539767459,13539460249,13538975440,13539467165,13539427681,13539468774,13539479144,13538927254,13538927254";
 		 souceDate="13538947342,13539489582,13539429047";
 		 souceDate="15118985501,15220670065,15220570980,15220574104,15119053015,15018085622,15220578924,15014942981,13620498267,15119017903";
+		 souceDate="13538947486,13538947363,13539490295,13539474507,13539431483,13539409167,13539767459,13539460249,13538975440,13539467165,13539427681,13539468774,13539479144,13538927254,13538927254";
 		 String[] phoneStrings= souceDate.split(",");
 		 newUsers=Arrays.asList(phoneStrings);
 	}
 	
-    @Ignore
+    //@Ignore
 	@Test
 	public void newUser() {
 		if(newUsers==null)
@@ -94,12 +95,12 @@ public class HualaNewUserInShop {
 		{
 			HualaCommonHandle.ShowMes(nowUser);
 			HualaCommonHandle.hualaLogin(driver, nowUser);
-			HualaCommonHandle.hualaCreatAddress(driver, nowUser);
-			HualaCommonHandle.hualaGotoShop(driver, "562"); //584
+			//HualaCommonHandle.hualaCreatAddress(driver, nowUser);
+			HualaCommonHandle.hualaGotoShop(driver, "584"); //584
 			//HualaCommonHandle.hualaGetRedPackets(driver);
 			HualaCommonHandle.hualaCreatOrder(driver);
 			HualaCommonHandle.hualaPayLastOrder(nowUser);
-			HualaCommonHandle.hualaUserSureOrder(driver,"Shop001"); //AutoShop002
+			HualaCommonHandle.hualaUserSureOrder(driver,"AutoShop002"); //AutoShop002
 			HualaCommonHandle.hualaLoginOut(driver);
 			
 			/*
@@ -117,7 +118,7 @@ public class HualaNewUserInShop {
 		}
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void newLogin() {
 		//13023700122   13534718310

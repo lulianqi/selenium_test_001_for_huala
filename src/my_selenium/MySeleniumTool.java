@@ -70,12 +70,15 @@ public final class MySeleniumTool {
     	    catch (WebDriverException e) {
     	        if (e.getMessage().startsWith("Could not find")){
     	        	showSeleniumMes("There is no alert appear!");
+    	        	return flag;
     	        }else{
     	        	showSeleniumMes(e.toString());
+    	        	return flag;
     	        }
     	    }
     	} catch (NoAlertPresentException e) {
     		showSeleniumMes("There is no alert appear!");
+    		return flag;
     	}
     	return flag;
     }

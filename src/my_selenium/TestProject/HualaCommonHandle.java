@@ -49,8 +49,10 @@ public final class HualaCommonHandle {
 		//http://xp.xiaxiaw.com/huala/v3#/seller/562
 		String phoneCode ="";
 	    driver.get(baseUrl + "/huala/v3#/seller/562");
-	    MySleep(5000);
-	    driver.findElement(By.xpath("//*[@id=\"ng-view\"]/header/form/p[4]/em")).click();
+	    MySleep(4000);
+	    MySeleniumTool.dealTheAlert(driver, true);
+	    MySleep(1000);
+	    driver.findElement(By.xpath("//*[@id=\"ng-view\"]/header/form/p[4]/em")).click();   
 	    driver.findElement(By.xpath("//*[@id=\"ng-view\"]/header/form/nav/ul/li[3]/a")).click();
 	    
 	    ShowMes("开始登录");
@@ -100,7 +102,8 @@ public final class HualaCommonHandle {
 			hualaGotoShop(driver,"562");
 			MySeleniumTool.clickElement("//*[@id=\"ng-view\"]/header/form/p[4]");
 		}
-		
+		//强制删除cookie
+		driver.manage().deleteCookieNamed("USERID");
 		MySeleniumTool.clickElement("//*[@id=\"ng-view\"]/header/form/nav/ul/li[3]/a",2000);
 		MySeleniumTool.clickElement("//*[@id=\"ng-view\"]/div[1]/div[3]",1000);
 	}
@@ -197,7 +200,7 @@ public final class HualaCommonHandle {
 	 */
 	public static void hualaCreatOrder(WebDriver driver) {
 		 ShowMes("开始下单");
-		 MySleep(1500);
+		 MySleep(1501);
 		 driver.findElement(By.linkText("查看全部")).click(); 
 		    MySleep(2000);
 		    try {
@@ -223,10 +226,14 @@ public final class HualaCommonHandle {
 		    driver.findElement(By.cssSelector("button.gotobuy")).click();
 		    
 		    ShowMes("确认订单");
-		    MySleep(5000);
+		    MySleep(4000);
 		    /*Alert alert = driver.switchTo().alert();
 		    alert.accept();*/
-		    MySeleniumTool.dealTheAlert(driver, true);
+		    if(!MySeleniumTool.dealTheAlert(driver, true))
+		    {
+		    	ShowMes("try dealTheAlert again");
+		    	MySeleniumTool.dealTheAlert(driver, true);
+		    }
 		    MySleep(1000);
 	}
 	
